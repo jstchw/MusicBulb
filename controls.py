@@ -1,16 +1,12 @@
-import threading
 import random
 import pyaudio
 import numpy as np
 
-Threshold = 10
 
-SHORT_NORMALIZE = (1.0 / 32768.0)
 chunk = 1024
 FORMAT = pyaudio.paInt16
 CHANNELS = 1
 RATE = 16000
-swidth = 2
 
 
 class Controls:
