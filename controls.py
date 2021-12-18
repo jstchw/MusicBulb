@@ -29,8 +29,7 @@ class Controls:
                                   rate=RATE,
                                   input=True,
                                   output=False,
-                                  frames_per_buffer=chunk,
-                                  input_device_index=3)
+                                  frames_per_buffer=chunk)
 
     def change_color_endless(self):
         threading.Timer(0.2, self.change_color_endless).start()
@@ -44,11 +43,14 @@ class Controls:
             # find peaks
             peak = np.average(np.abs(data)) * 2
 
-            cnt = int(50 * peak / 2 ** 16)
-            if cnt < 0:
-                cnt = 1
+            # cnt = int(50 * peak / 2 ** 16)
+            # if cnt < 0:
+            #     cnt = 1
 
-            print(cnt)
+            print(peak)
 
-            if cnt >= 1:
-                self.p100.setColor(random.randrange(0, 360), 100)
+            if peak >= 2000:
+                try:
+                    self.p100.setColor(random.randrange(0, 360), 100)
+                except:
+                    pass

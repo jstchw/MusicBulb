@@ -1,3 +1,5 @@
+import threading
+
 from PyP100 import PyP100
 from controls import Controls
 import config
@@ -13,4 +15,5 @@ control_unit = Controls(p100)
 p100.handshake()
 p100.login()
 
+threading.Timer(.1, control_unit.listen).start()
 control_unit.listen()
