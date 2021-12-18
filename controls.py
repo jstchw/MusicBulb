@@ -43,6 +43,6 @@ class Controls:
 
             if peak >= 2000:
                 try:
-                    self.p100.setColor(random.randrange(0, 360), 100)
+                    self.p100.setColor(random.randrange(0, 360), 100, 100)
                 except:
                     pass
