@@ -31,10 +31,6 @@ class Controls:
                                   output=False,
                                   frames_per_buffer=chunk)
 
-    def change_color_endless(self):
-        threading.Timer(0.2, self.change_color_endless).start()
-        self.p100.setColor(random.randrange(0, 360), 100, 100)
-
     def listen(self):
         print('Listening beginning')
         while True:
