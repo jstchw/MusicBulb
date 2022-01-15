@@ -2,7 +2,6 @@ import random
 import pyaudio
 import numpy as np
 
-
 chunk = 1024
 FORMAT = pyaudio.paInt16
 CHANNELS = 1
@@ -10,8 +9,8 @@ RATE = 16000
 
 
 class Controls:
-    def __init__(self, p100):
-        self.p100 = p100
+    def __init__(self, l530):
+        self.l530 = l530
         self.p = pyaudio.PyAudio()
 
         info = self.p.get_host_api_info_by_index(0)
@@ -35,14 +34,15 @@ class Controls:
             # find peaks
             peak = np.average(np.abs(data)) * 2
 
-            # cnt = int(50 * peak / 2 ** 16)
-            # if cnt < 0:
-            #     cnt = 1
+            cnt = int(50 * peak / 2 ** 16)
+            if cnt < 0:
+                cnt = 1
 
-            print(peak)
+            print(cnt)
 
-            if peak >= 2000:
+            # TODO Create a function to adjust peaks (if peak is too high -> increase the threshold)
+            if cnt >= 3:
                 try:
-                    self.p100.setColor(random.randrange(0, 360), 100, 100)
+                    self.l530.setColor(random.randrange(0, 360), 100)
                 except:
                     pass
